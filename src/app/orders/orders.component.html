@@ -1,0 +1,55 @@
+<h1>Todas las órdenes</h1>
+
+<mat-button-toggle-group #actions="matButtonToggleGroup">
+    <mat-button-toggle value="all" (change)="filter(actions.value)" checked></mat-button-toggle>
+   
+</mat-button-toggle-group>
+
+<table mat-table [dataSource]="ordersToDisplay">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Order ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Book Id -->
+    <ng-container matColumnDef="userid">
+        <th mat-header-cell *matHeaderCellDef>Usuario Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Book Id -->
+    <ng-container matColumnDef="bookid">
+        <th mat-header-cell *matHeaderCellDef>Libro Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.bookId}} </td>
+    </ng-container>
+
+    <!-- Book -->
+    <ng-container matColumnDef="book">
+        <th mat-header-cell *matHeaderCellDef>Nombre Del Libro</th>
+        <td mat-cell *matCellDef="let element"> {{element.bookName}} </td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Fecha Pedido</th>
+        <td mat-cell *matCellDef="let element"> {{element.orderDate | date:'dd-MMM-YYYY'}} </td>
+    </ng-container>
+
+    <!-- Returned -->
+    <ng-container matColumnDef="returned">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+
+</table>
